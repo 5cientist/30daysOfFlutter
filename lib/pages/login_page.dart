@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catlog/utils/routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
 
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,7 +23,7 @@ class LoginPage extends StatelessWidget {
               height: 20.0,
             ),
             Text(
-              "Welcome",
+              "Welcome $name",
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -40,6 +44,11 @@ class LoginPage extends StatelessWidget {
                       hintText: "Enter username",
                       labelText: "Username",
                     ),
+                    onChanged: (value) {
+                      name = value;
+
+                      setState(() {});
+                    },
                   ),
                   TextFormField(
                     obscureText: true,
@@ -49,20 +58,15 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 40.0,
+                    height: 20.0,
                   ),
                   ElevatedButton(
                     child: Text(
                       "Login",
                     ),
-                    style: TextButton.styleFrom(
-                      minimumSize: Size(150, 40),
-                    ),
+                    style: TextButton.styleFrom(minimumSize: Size(150, 40)),
                     onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        MyRoutes.homeRoute,
-                      );
+                      Navigator.pushNamed(context, MyRoutes.homeRoute);
                     },
                   ),
                 ],
