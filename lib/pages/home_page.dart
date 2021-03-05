@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catlog/models/catalog.dart';
 import 'package:flutter_catlog/widgets/drawer.dart';
-//day 11 about contex and tree
+import 'package:flutter_catlog/widgets/item_widget.dart';
 
 class HomePage extends StatelessWidget {
   final int days = 30;
@@ -8,14 +9,21 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text("Catelog App"),
       ),
-      body: Center(
-        child: Container(
-          child: Text("welcome to $days  days of flutter by $name "),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemCount: dummyList.length,
+          itemBuilder: (BuildContext context, int index) {
+            return ItemWidget(
+              item: dummyList[index],
+            );
+          },
         ),
       ),
       drawer: MyDrawer(),
