@@ -3,8 +3,14 @@ import 'package:flutter_catlog/models/catalog.dart';
 import 'package:flutter_catlog/widgets/drawer.dart';
 import 'package:flutter_catlog/widgets/item_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final int days = 30;
+
   final String name = "Hanshir";
 
   @override
